@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>IPL</title>
+</head>
+
+
+<body>
+    <div>
+        <h2 style="text-align: center;">IPL Player Management System - PES2UG19CS127</h2>
+        <h4 style="text-align: center;">Using CRUD Operations</h4>
+        <br/>
+        <tr>
+            <div>
+                <h3><a th:href="@{'/new'}">Add new</a></h3>
+            </div>
+        </tr>
+
+        <br /><br />
+        <div class="col-sm-5">
+            <div class="panel-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Team</th>
+                            <th>Age</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="players : ${listplayers }">
+                            <td th:text="${players.id}">ID</td>
+                            <td th:text="${players.name}">Name</td>
+                            <td th:text="${players.team}">Team</td>
+                            <td th:text="${players.age}">Age</td>
+                            <td><a th:href="@{'/edit/' + ${players.id}}">Edit</a></td>
+                            <td><a th:href="@{'/delete/' + ${players.id}}">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+</body>
+
+</html>
